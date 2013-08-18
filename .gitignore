@@ -35,6 +35,9 @@ nosetests.xml
 .pydevproject
 .idea
 
+# Secret keys
+secrets.py
+
 # Redis
 *.rdb
 *.aof
