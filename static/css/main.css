@@ -1,0 +1,37 @@
+body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+  }
+
+h4 {
+    text-align: center;
+}
+
+.alert {
+    text-align: center;
+    list-style: none;
+}
+
+#main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: hidden;
+}
+
+.icons-ul i {
+    cursor: default;
+}
+
+.list-unstyled {
+    margin: 0;
+    padding:  0;
+    list-style: none;
+}
+
+.list-unstyled li {
+    padding-bottom: 10px;
+    text-decoration: none;
+}

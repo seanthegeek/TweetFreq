@@ -1,0 +1,11 @@
+#status, #results {
+    text-align: center;
+}
+
+#status-spinner {
+    padding-top: 30px;
+}
+
+#status-spinner + #status-message {
+    padding-top: 20px;
+}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block head %}
+        <link rel="stylesheet" href="/static/css/ajax.css">
+        {% block ajax_head %}{% endblock %}
+{% endblock %}
+{% block body %}
+        <div id="status">
+            <p id="status-header" class="lead">Connecting to server</p>
+            <div id="status-spinner"></div>
+            <p id="status-message"></p>
+        </div>
+        <div id="results" class="hidden">
+             {% block results %}{% endblock %}
+        </div>
+{% endblock %}
+{% block js %}
+        {% if username %}
+             <script>var userName = "{{ username }}";</script>
+             <script src="/static/js/vendor/spin.min.js"></script>
+             <script src="/static/js/vendor/jquery.spin.js"></script>
+        {% endif %}
+        {% block ajax_js %}{% endblock %}
+        <script src="/static/js/ajax.js"></script>
+{% endblock %}

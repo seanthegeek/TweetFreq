@@ -1,0 +1,72 @@
+{% set navigation_bar = [
+    ('/', 'home', 'Home'),
+    ('/about/', 'about', 'About'),
+] -%}
+{% set active_page = active_page -%}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %} | TweetFreq</title>
+        <link rel="icon" type="image/png" href="/static/img/favicon.png">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        {% block head %}{% endblock %}
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script>window.html5 || document.write('<script src="/static/js/vendor/html5shiv.js"><\/script>')</script>
+        <![endif]-->
+    </head>
+    <body>
+     <div class="container" id="main" role="main">
+      <div class="masthead">
+          <noscript>
+              <div class="alert">
+	      		JavaScript is required to use this site.
+	      		</div>
+          </noscript>
+      	{% if notice %}
+	      	<div class="alert fade in">
+	      		<a class="close" data-dismiss="alert">×</a>
+	      		{{ notice }}
+	      		</div>
+      	{% endif %}
+      	<div id="nav" class="pull-right">
+	      	<ul class="nav nav-pills">
+	      		{% for href, id, caption in navigation_bar %}
+		      		<li{% if id == active_page %} class="active"{% endif%}>
+		      		<a href="{{ href|e }}">{{ caption|e }}</a></li>
+	      		{% endfor %}
+	      		</ul>
+      	</div>
+            <h2>TweetFreq</h2>
+      </div>
+      <hr>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+      	{% if messages %}
+    		<ul class="flashes">
+    			{% for category, message in messages %}
+      				<li class="alert alert-{{ category }} fade in">
+      					<a class="close" data-dismiss="alert">×</a>
+      					{{ message }}
+      				</li>
+    			{% endfor %}
+    		</ul>
+    	{% endif %}
+	{% endwith %}
+      {% block body %}{% endblock %}
+      <hr>
+      <div class="footer">
+      	<p class="pull-left">By <a href="https://twitter.com/seanthegeek" target="_blank">@SeanTheGeek</a></p>
+        <p class="pull-right">Not affiliated with or endorsed by Twitter</p>
+      </div>
+    </div> <!-- /container -->
+        <script src="/static/js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="/static/js/vendor/bootstrap.min.js"></script>
+        {% block js %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% set active_page = "home" -%}
+{% block title %}Home{% endblock %}
+{% block head %}
+        <link rel="stylesheet" href="/static/css/vendor/jquery.dataTables.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+{% block body %}
+        <div id="home">
+            <p class="lead">Analyze tweet frequency and composition*</p>
+             <form method="post" action=".">
+                 <div class="input-group">
+                     <span class="input-group-addon">@</span>
+                     {{ form.name(class="form-control", autofocus="autofocus", placeholder=form.name.label.text) }}
+                 </div>
+                 {{ form.hidden_tag() }}
+                <input class="btn btn-success btn-lg btn-large" type="submit" value="Run">
+            </form>
+            <small><p>*Word analysis functions properly for English language tweets only.</p></small>
+        </div>
+{% endblock %}

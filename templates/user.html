@@ -1,0 +1,52 @@
+{% extends "ajax.html" %}
+{% block title %}User report: {{ username }}{% endblock %}
+{% block ajax_head %}
+        <link rel="stylesheet" href="/static/css/vendor/jquery.dataTables.css">
+        <link rel="stylesheet" href="/static/css/user.css">
+{% endblock %}
+{% block results %}
+    <h3>{{ username }}</h3>
+    <p class="lead">Based on <span id="total"></span> tweets,<br>from <span id="start"></span> to <span id="end"></span>.*</p>
+    <h4>Frequency</h4>
+    <div id="chart">
+
+    </div>
+    <p>Of days where a tweet was posted, the average number of tweets was <span id="avg"></span>; the maximum was <span id="max"></span>.</p>
+    <div id="tables" class="row">
+        <table id="dates">
+        <thead>
+            <tr><th>Date<th>Number of tweets</th></tr>
+        </thead>
+        <tbody id="dates-body">
+
+        </tbody>
+    </table>
+    <h4>Composition</h4>
+    <table id="words">
+        <thead>
+            <tr><th>Rank</th><th>Word</th><th>Count</th></tr>
+        </thead>
+        <tbody id="words-body">
+
+        </tbody>
+    </table>
+    </div>
+        <div id="report-footer" class="row">
+            <div id="disclaimers" class="col-md-8">
+                <small><p>Limited by the <a href="https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline" target="_blank">Twitter API</a> to about the last 3,200 tweets. The number can very per request.<br>
+                Includes replies and retweets. Does not include deleted tweets.</p>
+            </small>
+            </div>
+            <div id="timestamps" class="col-md-4">
+                <small><p>Created on <span id="created"></span><br>
+                Cashed until <span id="expires"></span><br>
+                <a href="/u/{{ username }}.json" target="_blank">JSON format</a></p></small>
+            </div>
+         </div>
+{% endblock %}
+{% block ajax_js %}
+        <script src="/static/js/vendor/highcharts/highcharts.js"></script>
+        <script src="/static/js/vendor/highcharts/modules/exporting.js"></script>
+        <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
+        <script src="/static/js/user.js"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+div#home {
+    text-align: center;
+}
+div#home form {
+    max-width: 200px;
+    margin: 5px auto;
+}
+
+div#home input.btn {
+    margin: 20px 0;
+}
