@@ -4,5 +4,6 @@ Flask-Babel==0.9
 Flask-WTF==0.8.4
 celery==3.0.21
 docopt==0.6.1
+nltk==2.0.4
 redis==2.7.6
 twython==3.0.0
