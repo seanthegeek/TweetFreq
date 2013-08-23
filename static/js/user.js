@@ -11,7 +11,7 @@ $(document).ready(function() {
         $("#expires").text(data['expires']);
 
         // Load words
-        var searchBase = 'https://twitter.com/search?q=';
+        var searchBase = 'https://twitter.com/search?mode=realtime&q=';
         var searchURL;
         var date;
         var word;
@@ -46,9 +46,7 @@ $(document).ready(function() {
                 text: 'Tweet frequency per day for ' + userName
             },
             subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' :
-                    'Drag your finger over the plot to zoom in'
+                text: "TweetFreq.net"
             },
             xAxis: {
                 type: 'datetime',
@@ -99,5 +97,5 @@ $(document).ready(function() {
         });
     }
 
-    getData("/u/" + userName + ".json", processData);
+    $.getData("/u/" + userName + ".json", processData);
 });

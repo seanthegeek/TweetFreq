@@ -13,12 +13,12 @@ $(document).ready(function() {
         statusMessage.text(message);
     }
 
-    function getData(path, callback) {
+    $.getData = function (path, callback) {
         $.getJSON(path, function(data){
         if (data['status'] !== 'done') {
             setStatus(data['header'], data['message']);
             if (data['status'] !== 'error') {
-                setTimeout(function() {getData(path, callback);}, 500);
+                setTimeout(function() {$.getData(path, callback);}, 500);
             }
             else {
                 statusSpinner.spin(false);
