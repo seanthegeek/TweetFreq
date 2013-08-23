@@ -75,10 +75,10 @@ def load_tweets(username):
     """Loads json results into redis as a cache"""
     redis = StrictRedis()
     redis_key = "%s.user.%s" % (REDIS_PREFIX, username)
-    status = loads(redis.get(redis_key))
+    status = redis.get(redis_key)
 
     # Prevent DoS
-    if status is not None and status['status'] != 'queued':
+    if status is not None and loads(status)['status'] != 'queued':
         return None
     try:
         created = datetime.utcnow()
