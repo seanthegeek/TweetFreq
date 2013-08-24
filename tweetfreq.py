@@ -209,6 +209,7 @@ def view_user_json(username):
                      message="Your request will be processed shortly",
                      code=200)
         redis.set(redis_key, dumps(cache))
+        redis.expire(redis_key, CACHE_HOURS*60*60)
         load_tweets.delay(username)
         sleep(.5)
     cache = loads(redis.get(redis_key))
