@@ -57,7 +57,8 @@ $(document).ready(function() {
             },
             yAxis: {
                 title: {
-                    text: 'Number of tweets'
+                    text: 'Number of tweets',
+                    min: 1
                 }
             },
             tooltip: {
