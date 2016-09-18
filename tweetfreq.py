@@ -10,7 +10,9 @@ from time import sleep
 from redis import StrictRedis
 from flask import Flask, render_template, flash, jsonify, redirect, url_for
 from flask.json import loads, dumps
-from flask.ext.wtf import Form, TextField, Length, Required
+from flask_wtf import Form
+from wtforms import StringField
+from wtforms.validators import DataRequired, Length
 
 from twitter import get_count, get_full_timeline, get_tweet_datetimes,\
     get_words_from_tweets, get_next_reset, convert_timestamp,\
@@ -34,16 +36,18 @@ BABEL = Babel(APP)
 REDIS_PREFIX = "tweetfreq"
 CACHE_HOURS = 1
 
-BROKER_URL = 'redis://localhost:6379/1'
-
-CELERY = Celery(REDIS_PREFIX, broker=BROKER_URL)
+CELERY = Celery(REDIS_PREFIX, broker=APP.config["BROKER_URL"])
+CELERY.conf.CELERY_TASK_SERIALIZER = 'json'
+CELERY.conf.CELERY_RESULT_SERIALIZER = 'json'
+CELERY.conf.CELERY_ACCEPT_CONTENT = ['json']
 
 LOCALE = APP.config['BABEL_DEFAULT_LOCALE']
 
 
 class UserForm(Form):
     """Form to search by username"""
-    name = TextField(label="Username", validators=[Length(max=16), Required()])
+    name = StringField(label="Username", validators=[Length(max=16),
+                           DataRequired()])
 
 
 def flash_errors(form):

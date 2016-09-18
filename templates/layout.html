@@ -21,20 +21,21 @@
             <script>window.html5 || document.write('<script src="/static/js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
         <!-- Piwik -->
-	    <script type="text/javascript">
-	      var _paq = _paq || [];
-	      _paq.push(["trackPageView"]);
-	      _paq.push(["enableLinkTracking"]);
-	
-	      (function() {
-	        var u="https://bythebit.net/piwik/";
-	        _paq.push(["setTrackerUrl", u+"piwik.php"]);
-	        _paq.push(["setSiteId", "2"]);
-	        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-	        g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-	      })();
-	    </script>
-    <!-- End Piwik Code -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDomains", ["*.tweetfreq.net"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//piwik.seanthegeek.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '2']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//piwik.seanthegeek.net/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
     </head>
     <body>
      <div class="container" id="main" role="main">
