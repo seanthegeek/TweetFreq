@@ -30,10 +30,6 @@ $(document).ready(function() {
         }
         updateWordcloud(words);
 
-        $(window).resize(function(event) {
-            updateWordcloud(words);
-        });
-
         $("#dates").dataTable();
 
         for (var i=0; i<data['words'].length; i++){
