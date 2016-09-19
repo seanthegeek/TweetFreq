@@ -15,10 +15,13 @@ Options:
 """
 
 from re import match
-from HTMLParser import HTMLParser
 from math import ceil
 from time import mktime, strptime
 from datetime import datetime
+try:
+    from html.parser import HTMLParser
+except ImportError:
+    from HTMLParser import HTMLParser
 
 import docopt
 import redis

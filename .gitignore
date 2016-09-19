@@ -42,3 +42,5 @@ secrets.py
 # Redis
 *.rdb
 *.aof
+
+init.sh
