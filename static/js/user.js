@@ -16,7 +16,7 @@ $(document).ready(function() {
         var date;
         var word;
         var tr;
-
+        var words = data['words'];
         for (var i=0; i<data['dates'].length; i++){
             date = data['dates'][i];
             if (i === data['dates'].length-1) {
@@ -28,6 +28,12 @@ $(document).ready(function() {
             tr = "<tr><td><a target='_blank' href='"+searchURL+"'>"+date[0]+"</a></td><td>"+date[1]+"</td></tr>";
             $("#dates-body").append(tr);
         }
+        updateWordcloud(words);
+
+        window.onresize = function(event) {
+            updateWordcloud(words);
+        };
+
         $("#dates").dataTable();
 
         for (var i=0; i<data['words'].length; i++){

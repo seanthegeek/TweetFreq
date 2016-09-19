@@ -22,6 +22,7 @@
         </tbody>
     </table>
     <h4>Composition</h4>
+        <dev id="wordcloud"></dev>
     <table id="words">
         <thead>
             <tr><th>Rank</th><th>Word</th><th>Count</th></tr>
@@ -45,8 +46,11 @@
          </div>
 {% endblock %}
 {% block ajax_js %}
-        <script src="/static/js/vendor/highcharts/highcharts.js"></script>
-        <script src="/static/js/vendor/highcharts/modules/exporting.js"></script>
-        <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
-        <script src="/static/js/user.js"></script>
+    <script src="/static/js/vendor/highcharts/highcharts.js"></script>
+    <script src="/static/js/vendor/highcharts/modules/exporting.js"></script>
+    <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/static/js/vendor/d3js-wordcloud/d3/d3.min.js"></script>
+    <script src="/static/js/vendor/d3js-wordcloud/d3-cloud/d3.layout.cloud.js"></script>
+    <script src="/static/js/vendor/d3js-wordcloud/word-cloud.js"></script>
+    <script src="/static/js/user.js"></script>
 {% endblock %}
