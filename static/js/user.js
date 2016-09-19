@@ -30,9 +30,9 @@ $(document).ready(function() {
         }
         updateWordcloud(words);
 
-        window.onresize = function(event) {
+        $(window).resize(function(event) {
             updateWordcloud(words);
-        };
+        });
 
         $("#dates").dataTable();
 
