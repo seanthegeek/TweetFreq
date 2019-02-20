@@ -6,4 +6,4 @@ docopt>=0.6.2
 nltk>=3.4
 redis>=3.2.0
 twython>=3.7.0
-
+gunicorn>=19.9.0
