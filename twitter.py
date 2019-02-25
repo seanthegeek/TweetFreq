@@ -32,7 +32,7 @@ from nltk.corpus import stopwords
 
 __author__ = "Sean Whalen"
 __license___ = "MIT"
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 # Prefix to avoid naming conflicts
 REDIS_PREFIX = 'tweetferq'
@@ -260,11 +260,13 @@ def normalize_word(word):
         ending_punctuation += (')', ']', '}', '>', u"\u00BB")
 
     word = PARSER.unescape(word)
-    while word.startswith(starting_punctuation):
-        word = word[1:]
+    for sp in starting_punctuation:
+        word = word.lstrip(sp)
+    for ep in ending_punctuation:
+        word = word.lstrip(ep)
     if word not in ending_exceptions:
-        while word.endswith(ending_punctuation):
-            word = word[:-1]
+        for ep in ending_punctuation:
+            word = word.rstrip(ep)
 
     return word
 
